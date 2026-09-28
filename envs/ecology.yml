@@ -1,0 +1,14 @@
+name: step8_ecology
+
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+
+dependencies:
+  - python
+  - pandas
+  - r-base
+  - r-vegan
+  - r-ggplot2
+  - r-igraph

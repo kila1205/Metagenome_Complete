@@ -1,0 +1,12 @@
+name: andaliman_step4
+
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+
+dependencies:
+  - minimap2
+  - samtools
+  - metabat2
+  - seqkit

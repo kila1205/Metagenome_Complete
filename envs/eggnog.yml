@@ -1,0 +1,9 @@
+name: metagenome_eggnog
+
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+
+dependencies:
+  - eggnog-mapper

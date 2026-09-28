@@ -1,0 +1,9 @@
+name: metagenome_core
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+
+dependencies:
+  - python=3.11
+  - pigz

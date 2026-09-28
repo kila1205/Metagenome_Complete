@@ -1,0 +1,16 @@
+name: andaliman_step5
+
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+
+dependencies:
+  - coverm
+  - minimap2
+  - samtools
+  - python
+  - pandas
+  - r-base
+  - bioconductor-deseq2
+  - r-ggplot2

@@ -1,0 +1,10 @@
+name: andaliman_step6
+
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+
+dependencies:
+  - mmseqs2
+  - seqkit

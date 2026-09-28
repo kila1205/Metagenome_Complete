@@ -1,0 +1,10 @@
+name: andaliman_step7
+
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+
+dependencies:
+  - python=3.11
+  - gtdbtk=2.7.2

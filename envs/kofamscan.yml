@@ -1,0 +1,8 @@
+name: metagenome_kofamscan
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+
+dependencies:
+  - kofamscan

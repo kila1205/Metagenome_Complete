@@ -1,0 +1,10 @@
+name: metagenome_read_taxonomy
+
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+
+dependencies:
+  - kraken2
+  - bracken
