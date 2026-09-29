@@ -6,4 +6,5 @@ channels:
   - nodefaults
 
 dependencies:
-  - eggnog-mapper
+  - python=3.11
+  - eggnog-mapper=2.1.12

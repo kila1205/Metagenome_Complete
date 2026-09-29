@@ -24,15 +24,34 @@ process EGGNOG_MAPPER {
           path("${sample_id}.emapper.seed_orthologs"),
           emit: seed_orthologs
 
-    // eggNOG-mapper does not always create a .log file.
-    // Keep it optional because downstream analysis only requires
-    // the annotation and seed-ortholog outputs.
     path "${sample_id}.emapper.log",
          emit: log,
          optional: true
 
     script:
     """
+    # eggNOG-mapper 2.1.12 expects DIAMOND inside its package bin
+    # directory, while Conda installs DIAMOND in \$CONDA_PREFIX/bin.
+    # Create the expected link before running eggNOG-mapper.
+
+    EGGNOG_PKG_BIN=\$(python - <<'PY'
+import os
+import eggnogmapper
+print(os.path.join(os.path.dirname(eggnogmapper.__file__), "bin"))
+PY
+)
+
+    mkdir -p "\$EGGNOG_PKG_BIN"
+    ln -sf "\$CONDA_PREFIX/bin/diamond" "\$EGGNOG_PKG_BIN/diamond"
+
+    echo "========================================"
+    echo "eggNOG environment check"
+    echo "========================================"
+    python --version
+    echo "emapper: \$(command -v emapper.py)"
+    echo "diamond: \$(command -v diamond)"
+    diamond --version
+
     emapper.py \
         -i ${proteins} \
         --itype proteins \
@@ -42,5 +61,6 @@ process EGGNOG_MAPPER {
         --output ${sample_id}
 
     test -s ${sample_id}.emapper.annotations
+    test -s ${sample_id}.emapper.seed_orthologs
     """
 }

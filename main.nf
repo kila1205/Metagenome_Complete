@@ -508,8 +508,16 @@ workflow {
     ====================================================
     */
 
+    gtdbtk_data_ch = Channel.value(
+        file(
+            params.gtdbtk_data_path,
+            checkIfExists: true
+        )
+    )
+
     GTDBTK_CLASSIFY(
-        METABAT2.out.bins
+        METABAT2.out.bins,
+        gtdbtk_data_ch
     )
 
 
